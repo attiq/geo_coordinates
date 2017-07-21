@@ -13,7 +13,7 @@ For Production, user can set the environment variables.
 
 The value of 'ENV["GOOGLE_MAP_LOOKUP"]' will used to determine if system will lookup the address on server OR Google Map.
 
-**These are some basic flows if 'ENV["GOOGLE_MAP_LOOKUP"]' is set to "true"
+==These are some basic flows if 'ENV["GOOGLE_MAP_LOOKUP"]' is set to "true"
 
 ==Flow 1:
 
@@ -30,7 +30,7 @@ The value of 'ENV["GOOGLE_MAP_LOOKUP"]' will used to determine if system will lo
     * it displays "Address Not Found" on the page
 
 
-**These are some basic flows if 'ENV["GOOGLE_MAP_LOOKUP"]' is set to 'false'
+==These are some basic flows if 'ENV["GOOGLE_MAP_LOOKUP"]' is set to 'false'
 
 ==Flow 1:
 
@@ -43,7 +43,7 @@ The value of 'ENV["GOOGLE_MAP_LOOKUP"]' will used to determine if system will lo
     * user enters address
     * server does not find address
     * server randomly generates geo coordinates
-      'NOTE: server will randomly determin if its require to generate coordinates'
+      **'NOTE: server will randomly determin if its require to generate coordinates'
     * server stores address with generated coordinates
     * address and geo coordinates displayed on the page
 
@@ -66,4 +66,4 @@ The value of 'ENV["GOOGLE_MAP_LOOKUP"]' will used to determine if system will lo
     * it displays "Address Not Found" on the page
 
 
-**Hope it will help to test the application.
+==Hope it will help to test the application.
