@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2>Send Us your Address</h2>
+
+    <p>and we'll let you Know where you are</p>
+  </div>
+</div>
+<%= form_tag coordinates_locations_url, :id => "address-form" do %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label> Address</label>
+          <%= text_field_tag :address, "", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </div>
+<% end %>
+
+<div class="row", id="coordinates">
+  <div class="col-md-12">
+    <label>Address:</label><span id="result-address"></span> <br/>
+    <label>Geo coordinates:</label><span id="result-coor"></span>
+  </div>
+</div>
+
+<%= form_tag locations_url, :id => "location-form", :remote => true do %>
+
+    <%= hidden_field_tag "location[address]" %>
+    <%= hidden_field_tag "location[latitude]" %>
+    <%= hidden_field_tag "location[longitude]" %>
+
+<% end %>
+

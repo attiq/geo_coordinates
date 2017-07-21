@@ -1,0 +1,55 @@
+function server_lookup(address) {
+    var valuesToSubmit = $('#address-form').serialize();
+    $.ajax({
+        type: "POST",
+        url: $('#address-form').attr('action'), //sumbits it to the given url of the form
+        data: valuesToSubmit,
+        dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+    }).success(function (response) {
+        if (response.success) {
+            display(response.location.address, response.location.latitude, response.location.longitude);
+        } else {
+            geocode(address);
+        }
+    });
+}
+
+function geocode(address) {
+    $.ajax({
+        type: "GET",
+        url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyB-YUx2UxhW0v3ouonGnLKMSDGyFt_RuZE" + "<%= Rails.application.secrets.google_map_key %>",
+        dataType: "json",
+        success: function (response) {
+            if (response.status === "OK") {
+                var lat = response.results[0].geometry.location.lat;
+                var lng = response.results[0].geometry.location.lng;
+                $("#location_latitude").val(lat);
+                $("#location_longitude").val(lng);
+                $("#location-form").submit();
+                display(address, lat, lng);
+            } else {
+                display(address, 'Not Found', 'Not Found');
+            }
+            $("#result-address").html(address);
+        },
+        error: function () {
+            display(address, 'Not Found', 'Not Found');
+        }
+    });
+}
+
+function display(address, lat, lng) {
+    $("#coordinates").show();
+    $("#result-address").html(address);
+    $("#result-coor").html(lat + " , " + lng);
+}
+
+$('#address-form').submit(function () {
+    var address = $("#address").val();
+    if ('true' == '<%= Rails.application.secrets.google_map_lookup %>') {
+        geocode(address);
+    } else {
+        server_lookup(address);
+    }
+    return false; // prevents normal behaviour
+});
