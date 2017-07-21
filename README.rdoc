@@ -3,13 +3,13 @@
 Rails app which allows a user to enter their address and then returns the geo coordinates of the address location.
 
 == Configuration
-Application requires to set the values of two configuration variables.
+Application requires to set the values of two configuration variables for the Production environment.
 
   1 - ENV['GOOGLE_MAP_LOOKUP']  = 'true' OR 'false'
   2 - ENV['GOOGLE_MAP_KEY'] = <google api key>
 
 For Development environment,  user can directly set the values in the file 'config/secrets.yml'.
-For Production, user can set the environment variables.
+
 
 The value of 'ENV["GOOGLE_MAP_LOOKUP"]' will used to determine if system will lookup the address on server OR Google Map.
 
