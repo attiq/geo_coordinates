@@ -5,59 +5,65 @@ Rails app which allows a user to enter their address and then returns the geo co
 == Configuration
 Application requires to set the values of two configuration variables.
 
- * ENV["GOOGLE_MAP_LOOKUP"]  = "true" OR "false"
- * ENV["GOOGLE_MAP_KEY] = <google api key>
+  1 - ENV['GOOGLE_MAP_LOOKUP']  = 'true' OR 'false'
+  2 - ENV['GOOGLE_MAP_KEY'] = <google api key>
 
-For Development environment,  user can directly set the values in the file "config/secrets.yml".
+For Development environment,  user can directly set the values in the file 'config/secrets.yml'.
 For Production, user can set the environment variables.
 
-The value of ENV["GOOGLE_MAP_LOOKUP"] will used to determine if system will lookup the address on server OR Google Map.
+The value of 'ENV["GOOGLE_MAP_LOOKUP"]' will used to determine if system will lookup the address on server OR Google Map.
 
-These are some basic flows if ENV["GOOGLE_MAP_LOOKUP"] is set to "true"
-
-==Flow 1:
-* user enters address
-* it looks up the geo coordinates using the google maps api
-* it sends geo coordinates to server to store
-* address and geo coordinates displayed on the page
-
-==Flow 2:
-* user enters address
-* it looks up the geo coordinates using the google maps api
-* google maps is unable to match the address with geo coordinates
-* it displays "Address Not Found" on the page
-
-
-These are some basic flows if ENV["GOOGLE_MAP_LOOKUP"] is set to "false"
+**These are some basic flows if 'ENV["GOOGLE_MAP_LOOKUP"]' is set to "true"
 
 ==Flow 1:
-* user enters address
-* erver finds geo coordinates with address
-* address and geo coordinates displayed on the page
+
+    * user enters address
+    * it looks up the geo coordinates using the google maps api
+    * it sends geo coordinates to server to store
+    * address and geo coordinates displayed on the page
 
 ==Flow 2:
-* user enters address
-* server does not find address
-* server randomly generates geo coordinates
-  NOTE: server will randomly determin if its require to generate coordinates
-* server stores address with generated coordinates
-* address and geo coordinates displayed on the page
+
+    * user enters address
+    * it looks up the geo coordinates using the google maps api
+    * google maps is unable to match the address with geo coordinates
+    * it displays "Address Not Found" on the page
+
+
+**These are some basic flows if 'ENV["GOOGLE_MAP_LOOKUP"]' is set to 'false'
+
+==Flow 1:
+
+    * user enters address
+    * erver finds geo coordinates with address
+    * address and geo coordinates displayed on the page
+
+==Flow 2:
+
+    * user enters address
+    * server does not find address
+    * server randomly generates geo coordinates
+      'NOTE: server will randomly determin if its require to generate coordinates'
+    * server stores address with generated coordinates
+    * address and geo coordinates displayed on the page
 
 ==Flow 3:
-* user enters address
-* server does not find address
-* server sends a response indicating that the server is unable to provide geo coordinates
-* it looks up the geo coordinates using the google maps api
-* it sends geo coordinates to server to store
-* address and geo coordinates displayed on the page
+
+    * user enters address
+    * server does not find address
+    * server sends a response indicating that the server is unable to provide geo coordinates
+    * it looks up the geo coordinates using the google maps api
+    * it sends geo coordinates to server to store
+    * address and geo coordinates displayed on the page
 
 ==Flow 4:
-* user enters address
-* server does not find address
-* server sends a response indicating that the server is unable to provide geo coordinates
-* it looks up the geo coordinates using the google maps api
-* google maps is unable to match the address with geo coordinates
-* it displays "Address Not Found" on the page
+
+    * user enters address
+    * server does not find address
+    * server sends a response indicating that the server is unable to provide geo coordinates
+    * it looks up the geo coordinates using the google maps api
+    * google maps is unable to match the address with geo coordinates
+    * it displays "Address Not Found" on the page
 
 
-Hope it will help to test the application.
+**Hope it will help to test the application.
