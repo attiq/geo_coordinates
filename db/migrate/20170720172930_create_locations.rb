@@ -6,6 +6,6 @@ class CreateLocations < ActiveRecord::Migration
       t.float :longitude
       t.timestamps null: false
     end
-    add_index :locations, :address, unique: true
+    add_index :locations, :address
   end
 end
