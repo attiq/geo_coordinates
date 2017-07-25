@@ -1,0 +1,40 @@
+
+body {
+  background: url(pattern.png);
+  height: 100%;
+  color: #555555;
+  font-family: 'Slabo 27px', serif;
+
+}
+
+.container {
+  max-width: 500px;
+}
+
+.wrapper-box {
+  padding-top: 90px;
+}
+
+.wrapper-box h2 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.wrapper-box p {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.wrapper-box .form-control {
+  width: 90%;
+}
+
+.btn-primary {
+  background: #428bca;
+  border: 1px solid #428bca;
+}
+
+#coordinates {
+  display: none;
+  margin-top: 20px;
+}

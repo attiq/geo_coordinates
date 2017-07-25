@@ -14,8 +14,8 @@ class Location < ActiveRecord::Base
 
     # It will generate, store, and return, randomly generated coordinates
     def generate_random_location
-      location = Geocoder.search('41.38506, 2.17340').sample
-      return nil unless location.address.present?
+      location = Geocoder.search('-8.783195, -124.50852299999997').sample
+      return nil unless location && location.address.present?
       create(address: location.address, latitude: location.latitude, longitude: location.longitude)
     end
 
